@@ -11,22 +11,36 @@ paths:
         - default
       summary: GeoRoads
       requestBody:
+        description: JSON payload with longitude and latitude
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                long: 107.5758500037501
-                lat: -6.874720427234501
+              properties:
+                long:
+                  type: number
+                  example: 107.5758500037501
+                lat:
+                  type: number
+                  example: -6.874720427234501
       parameters:
         - name: Login
           in: header
+          required: true
+          description: Authorization token for the request
           schema:
             type: string
-          example: >-
-            v4.public.eyJhbGlhcyI6Ik0gRmFjaHJpemEgRmFyaGFuIiwiZXhwIjoiMjAyNC0xMS0yMlQyMDo1OTo0OVoiLCJpYXQiOiIyMDI0LTExLTIyVDAyOjU5OjQ5WiIsImlkIjoiNjI4OTUzNzkxMTQ5OTgiLCJuYmYiOiIyMDI0LTExLTIyVDAyOjU5OjQ5WiJ9AB22kGfMJphZn5ebOEUj3N6KnA1Ac6A-Hqb4JoBi_ld-Mt9Tww3eaZ9Q9q1udpqGMTAYvYIbjldLtS-0_uUhCg
+            example: >-
+              v4.public.eyJhbGlhcyI6Ik0gRmFjaHJpemEgRmFyaGFuIiwiZXhwIjoiMjAyNC0xMS0yMlQyMDo1OTo0OVoiLCJpYXQiOiIyMDI0LTExLTIyVDAyOjU5OjQ5WiIsImlkIjoiNjI4OTUzNzkxMTQ5OTgiLCJuYmYiOiIyMDI0LTExLTIyVDAyOjU5OjQ5WiJ9AB22kGfMJphZn5ebOEUj3N6KnA1Ac6A-Hqb4JoBi_ld-Mt9Tww3eaZ9Q9q1udpqGMTAYvYIbjldLtS-0_uUhCg
       responses:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: success
+                  data:
+                    message: "Road data fetched successfully"
