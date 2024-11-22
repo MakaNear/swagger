@@ -1,39 +1,32 @@
 openapi: 3.0.0
 info:
-  title: Geo API
+  title: Geo
   version: 1.0.0
 servers:
-  - url: https://asia-southeast2-awangga.cloudfunctions.net/jualin
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-tags:
-  - name: GeoRoads
+  - url: https://asia-southeast2-awangga.cloudfunctions.net
 paths:
-  /data/get/roads:
+  /jualin/data/get/roads:
     post:
       tags:
-        - GeoRoads
-      summary: Get Roads Data
-      security:
-        - bearerAuth: []
+        - default
+      summary: GeoRoads
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              properties:
-                long:
-                  type: number
-                  description: Longitude of the location
-                lat:
-                  type: number
-                  description: Latitude of the location
               example:
                 long: 107.5758500037501
                 lat: -6.874720427234501
+      parameters:
+        - name: Login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6Ik0gRmFjaHJpemEgRmFyaGFuIiwiZXhwIjoiMjAyNC0xMS0yMlQyMDo1OTo0OVoiLCJpYXQiOiIyMDI0LTExLTIyVDAyOjU5OjQ5WiIsImlkIjoiNjI4OTUzNzkxMTQ5OTgiLCJuYmYiOiIyMDI0LTExLTIyVDAyOjU5OjQ5WiJ9AB22kGfMJphZn5ebOEUj3N6KnA1Ac6A-Hqb4JoBi_ld-Mt9Tww3eaZ9Q9q1udpqGMTAYvYIbjldLtS-0_uUhCg
       responses:
         '200':
-          description: Successfully retrieved roads data
+          description: Successful response
+          content:
+            application/json: {}
