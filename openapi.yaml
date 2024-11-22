@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title: Geo API
+  version: 1.0.0
+servers:
+  - url: https://asia-southeast2-awangga.cloudfunctions.net/jualin
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: GeoRoads
+paths:
+  /data/get/roads:
+    post:
+      tags:
+        - GeoRoads
+      summary: Get Roads Data
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                long:
+                  type: number
+                  description: Longitude of the location
+                lat:
+                  type: number
+                  description: Latitude of the location
+              example:
+                long: 107.5758500037501
+                lat: -6.874720427234501
+      responses:
+        '200':
+          description: Successfully retrieved roads data
